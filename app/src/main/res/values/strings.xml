@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">EventMaster</string>
+    <string name="home_subtitle">Catálogo de eventos por categorías</string>
+    <string name="create_category">Nueva categoría</string>
+    <string name="create_category_title">Crear categoría personalizada</string>
+    <string name="create_category_description">Agrega una categoría que se mostrará de forma dinámica en la pantalla principal.</string>
+    <string name="category_name_label">Nombre de categoría</string>
+    <string name="category_description_label">Descripción breve (opcional)</string>
+    <string name="save_category">Guardar categoría</string>
+    <string name="add_event">Agregar evento</string>
+    <string name="add_event_title">Registrar nuevo evento</string>
+    <string name="event_title_label">Título del evento</string>
+    <string name="event_description_label">Descripción</string>
+    <string name="event_date_label">Fecha (ej: 12/06/2026)</string>
+    <string name="event_location_label">Ubicación</string>
+    <string name="event_image_label">Nombre de imagen en drawable (opcional)</string>
+    <string name="save_event">Guardar evento</string>
+    <string name="event_detail_title">Detalle del evento</string>
+    <string name="no_categories_message">Aún no hay categorías. Crea una para comenzar.</string>
+    <string name="no_events_in_category">No hay eventos en esta categoría.</string>
+    <string name="need_category_for_event">Primero debes crear una categoría para registrar eventos.</string>
+    <string name="select_category_placeholder">Selecciona una categoría</string>
+    <string name="event_not_found">No se encontró el evento solicitado.</string>
+    <string name="unknown_category">Categoría no disponible</string>
+    <string name="date_with_value">Fecha: %1$s</string>
+    <string name="location_with_value">Ubicación: %1$s</string>
+    <string name="image_placeholder_hint">Puedes agregar una imagen luego en drawable.</string>
+    <string name="back">Volver</string>
 </resources>
