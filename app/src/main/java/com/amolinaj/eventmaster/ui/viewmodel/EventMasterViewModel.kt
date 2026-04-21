@@ -144,39 +144,39 @@ class EventMasterViewModel : ViewModel() {
 
     private fun initialUiState(): EventMasterUiState {
         val defaultCategories = listOf(
-            EventCategory(id = 1, name = "Música", description = "Conciertos y festivales"),
+            EventCategory(id = 1, name = "Deportes", description = "Eventos y competencias deportivas"),
             EventCategory(id = 2, name = "Tecnología", description = "Conferencias y meetups"),
-            EventCategory(id = 3, name = "Deportes", description = "Eventos deportivos y competencias")
+            EventCategory(id = 3, name = "Música", description = "Conciertos y festivales"),
         )
 
         val defaultEvents = listOf(
             EventItem(
                 id = 1,
                 categoryId = 1,
-                title = "Festival Indie Night",
-                description = "Una noche con bandas emergentes y experiencias en vivo.",
-                date = "12/06/2026",
-                location = "Centro Cultural Andino",
-                imageResName = "event_music"
+                title = "Maratón de Santiago",
+                description = "Competencia abierta para corredores amateurs y profesionales.",
+                date = "26/04/2026",
+                location = "Santiago",
+                imageResName = "event_sports"
             ),
             EventItem(
                 id = 2,
                 categoryId = 2,
-                title = "Android Dev Summit Local",
-                description = "Charlas técnicas sobre Jetpack Compose, arquitectura y pruebas.",
+                title = "Congreso de Tecnología",
+                description = "Charlas técnicas con reconocidos exponentes de la tecnología.",
                 date = "28/07/2026",
-                location = "Hub Tecnológico Central",
+                location = "Sala de Teatro UCSC, Concepción",
                 imageResName = "event_tech"
             ),
             EventItem(
                 id = 3,
                 categoryId = 3,
-                title = "Carrera Urbana 10K",
-                description = "Competencia abierta para corredores amateurs y profesionales.",
-                date = "05/09/2026",
-                location = "Parque Metropolitano",
-                imageResName = "event_sports"
-            )
+                title = "Festival de Prueba",
+                description = "Una noche con bandas emergentes y experiencias en vivo.",
+                date = "12/06/2026",
+                location = "Parque Bicentenario, Concepción",
+                imageResName = "event_music"
+            ),
         )
 
         return EventMasterUiState(categories = defaultCategories, events = defaultEvents)
