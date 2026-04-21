@@ -21,12 +21,14 @@ data class EventFormValidationErrors(
     val descriptionError: String? = null,
     val dateError: String? = null,
     val locationError: String? = null,
-    val categoryError: String? = null
+    val categoryError: String? = null,
+    val imageError: String? = null
 ) {
     val hasErrors: Boolean
         get() = titleError != null ||
             descriptionError != null ||
             dateError != null ||
             locationError != null ||
-            categoryError != null
+            categoryError != null ||
+            imageError != null
 }

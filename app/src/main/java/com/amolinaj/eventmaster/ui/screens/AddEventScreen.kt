@@ -22,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.amolinaj.eventmaster.R
@@ -38,6 +39,7 @@ fun AddEventScreen(
     preselectedCategoryId: Int?,
     onBack: () -> Unit
 ) {
+    val context = LocalContext.current
     var title by rememberSaveable { mutableStateOf("") }
     var description by rememberSaveable { mutableStateOf("") }
     var date by rememberSaveable { mutableStateOf("") }
@@ -131,8 +133,14 @@ fun AddEventScreen(
 
             EventMasterTextField(
                 value = imageResName,
-                onValueChange = { imageResName = it },
-                label = stringResource(id = R.string.event_image_label)
+                onValueChange = {
+                    imageResName = it
+                    if (errors.imageError != null) {
+                        errors = errors.copy(imageError = null)
+                    }
+                },
+                label = stringResource(id = R.string.event_image_label),
+                errorMessage = errors.imageError
             )
 
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -169,13 +177,22 @@ fun AddEventScreen(
             }
 
             Button(onClick = {
+                val normalizedImageName = imageResName.trim()
+                val imageExists = normalizedImageName.isBlank() ||
+                    context.resources.getIdentifier(
+                        normalizedImageName,
+                        "drawable",
+                        context.packageName
+                    ) != 0
+
                 val validation = viewModel.addEvent(
                     title = title,
                     description = description,
                     date = date,
                     location = location,
                     categoryId = selectedCategoryId,
-                    imageResName = imageResName
+                    imageResName = imageResName,
+                    imageExists = imageExists
                 )
                 errors = validation
                 if (!validation.hasErrors) {

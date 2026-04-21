@@ -9,8 +9,14 @@ import com.amolinaj.eventmaster.ui.model.EventItem
 import com.amolinaj.eventmaster.ui.state.CategoryFormValidationErrors
 import com.amolinaj.eventmaster.ui.state.EventFormValidationErrors
 import com.amolinaj.eventmaster.ui.state.EventMasterUiState
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.ResolverStyle
 
 class EventMasterViewModel : ViewModel() {
+
+    private val strictDateFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu")
+        .withResolverStyle(ResolverStyle.STRICT)
 
     var uiState by mutableStateOf(initialUiState())
         private set
@@ -59,7 +65,9 @@ class EventMasterViewModel : ViewModel() {
         description: String,
         date: String,
         location: String,
-        categoryId: Int?
+        categoryId: Int?,
+        imageResName: String,
+        imageExists: Boolean
     ): EventFormValidationErrors {
         val titleError = when {
             title.isBlank() -> "El título es obligatorio"
@@ -75,6 +83,7 @@ class EventMasterViewModel : ViewModel() {
 
         val dateError = when {
             date.isBlank() -> "La fecha es obligatoria"
+            !isValidDate(date.trim()) -> "La fecha debe tener formato DD/MM/AAAA y ser válida"
             else -> null
         }
 
@@ -89,12 +98,19 @@ class EventMasterViewModel : ViewModel() {
             else -> null
         }
 
+        val imageError = when {
+            imageResName.isBlank() -> null
+            !imageExists -> "No se encontró la imagen en drawable"
+            else -> null
+        }
+
         return EventFormValidationErrors(
             titleError = titleError,
             descriptionError = descriptionError,
             dateError = dateError,
             locationError = locationError,
-            categoryError = categoryError
+            categoryError = categoryError,
+            imageError = imageError
         )
     }
 
@@ -104,14 +120,17 @@ class EventMasterViewModel : ViewModel() {
         date: String,
         location: String,
         categoryId: Int?,
-        imageResName: String
+        imageResName: String,
+        imageExists: Boolean
     ): EventFormValidationErrors {
         val errors = validateEvent(
             title = title,
             description = description,
             date = date,
             location = location,
-            categoryId = categoryId
+            categoryId = categoryId,
+            imageResName = imageResName,
+            imageExists = imageExists
         )
 
         if (errors.hasErrors) return errors
@@ -140,6 +159,15 @@ class EventMasterViewModel : ViewModel() {
 
     fun getCategoryById(categoryId: Int): EventCategory? {
         return uiState.categories.find { it.id == categoryId }
+    }
+
+    private fun isValidDate(value: String): Boolean {
+        return try {
+            LocalDate.parse(value, strictDateFormatter)
+            true
+        } catch (_: Exception) {
+            false
+        }
     }
 
     private fun initialUiState(): EventMasterUiState {
