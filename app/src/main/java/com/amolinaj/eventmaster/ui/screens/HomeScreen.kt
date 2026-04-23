@@ -47,10 +47,6 @@ fun HomeScreen(
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.Bold
                         )
-                        Text(
-                            text = stringResource(id = R.string.home_subtitle),
-                            style = MaterialTheme.typography.bodyMedium
-                        )
                     }
                 }
             )

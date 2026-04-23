@@ -1,5 +1,6 @@
 package com.amolinaj.eventmaster.ui.navigation
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
@@ -30,6 +31,7 @@ private fun buildAddEventRoute(categoryId: Int?): String {
     }
 }
 
+@SuppressLint("DiscouragedApi")
 @Composable
 fun Navigation() {
     val navController = rememberNavController()

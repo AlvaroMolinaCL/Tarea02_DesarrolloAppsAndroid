@@ -1,5 +1,7 @@
 package com.amolinaj.eventmaster.ui.viewmodel
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,6 +17,7 @@ import java.time.format.ResolverStyle
 
 class EventMasterViewModel : ViewModel() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private val strictDateFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu")
         .withResolverStyle(ResolverStyle.STRICT)
 
@@ -60,6 +63,7 @@ class EventMasterViewModel : ViewModel() {
         return CategoryFormValidationErrors()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun validateEvent(
         title: String,
         description: String,
@@ -71,19 +75,19 @@ class EventMasterViewModel : ViewModel() {
     ): EventFormValidationErrors {
         val titleError = when {
             title.isBlank() -> "El título es obligatorio"
-            title.trim().length < 4 -> "Debe tener al menos 4 caracteres"
+            title.trim().length < 4 -> "El título debe tener al menos 4 caracteres"
             else -> null
         }
 
         val descriptionError = when {
             description.isBlank() -> "La descripción es obligatoria"
-            description.trim().length < 10 -> "Debe tener al menos 10 caracteres"
+            description.trim().length < 10 -> "La descripción debe tener al menos 10 caracteres"
             else -> null
         }
 
         val dateError = when {
             date.isBlank() -> "La fecha es obligatoria"
-            !isValidDate(date.trim()) -> "La fecha debe tener formato DD/MM/AAAA y ser válida"
+            !isValidDate(date.trim()) -> "La fecha debe tener el formato DD/MM/AAAA y ser válida"
             else -> null
         }
 
@@ -114,6 +118,7 @@ class EventMasterViewModel : ViewModel() {
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun addEvent(
         title: String,
         description: String,
@@ -161,6 +166,7 @@ class EventMasterViewModel : ViewModel() {
         return uiState.categories.find { it.id == categoryId }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun isValidDate(value: String): Boolean {
         return try {
             LocalDate.parse(value, strictDateFormatter)
@@ -200,7 +206,7 @@ class EventMasterViewModel : ViewModel() {
                 id = 3,
                 categoryId = 3,
                 title = "Festival de Prueba",
-                description = "Una noche con bandas emergentes y experiencias en vivo.",
+                description = "Una noche con bandas y experiencias en vivo.",
                 date = "12/06/2026",
                 location = "Parque Bicentenario, Concepción",
                 imageResName = "event_music"
