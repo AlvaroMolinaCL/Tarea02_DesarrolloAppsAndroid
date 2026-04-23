@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">EventMaster</string>
-    <string name="home_subtitle">Catálogo de eventos por categorías</string>
     <string name="create_category">Nueva categoría</string>
     <string name="create_category_title">Crear categoría personalizada</string>
     <string name="create_category_description">Agrega una categoría que se mostrará de forma dinámica en la pantalla principal.</string>
