@@ -1,0 +1,14 @@
+# EventMaster
+Esta aplicación permite gestionar un catálogo de eventos (conciertos, conferencias, talleres). La aplicación contará con una vista inicial organizada por categorías, brindando también la opción de crear nuevas categorías personalizadas a través de un formulario.
+
+La aplicación incluye pantallas clave como el formulario para agregar eventos y la vista de detalles, haciendo énfasis en el uso de formularios, navegación, componentes personalizados y el manejo adecuado de estados.
+
+## Funcionalidades
+* **Pantalla de Inicio:** Es la primera pantalla que se muestra al entrar a la aplicación, en ella se pueden visualizar todos los eventos agrupados por categoría en tarjetas (cada tarjeta muestra la imagen del evento si es que tiene, el título, descripción si es que tiene, categoría y fecha), y se muestran también los botones para agregar un nuevo evento o categoría. Para el caso de agregar evento, también en cada categoría se muestra un botón para agregar un evento directo a la categoría correspondiente.
+* **Detalle del Evento:** Al entrar al detalle de un evento. se puede visualizar el título, categoría, fecha, ubicación, descripción (si tiene) y la imagen (o un texto por defecto si no tiene).
+* **Agregar evento:** Corresponde al formulario para agregar evento, en el cual se solicita indicar el título del evento, una descripción, fecha (formato DD/MM/AAAA), ubicación, nombre de la imagen en *drawable* (revisar [consideraciones importantes](https://github.com/AlvaroMolinaCL/Tarea02_DesarrolloAppsAndroid#consideraciones-importantes)), y la categoría. El formulario contiene validación de formato, extensión y mensajes de error.
+* **Agregar categoría:** Corresponde al formulario para agregar categoría, en el cual se solicita indicar el nombre de la categoría y una descripción (opcional).
+
+## Consideraciones importantes
+* Para efectos demostrativos, al entrar a la aplicación, siempre se mostrarán inicialmente 3 eventos vinculados a 3 categorías distintas. Dentro de la aplicación se pueden agregar tantas categorías o eventos como se desee, sin embargo, una vez cerrada la aplicación, toda la información agregada (distinta a la de ejemplo) se perderá dado que no hay persistencia de datos.
+* Para agregar una imagen al crear un evento, primero se debe agregar la imagen deseada al directorio *drawable*, y luego en el formulario de la aplicación se debe ingresar el nombre de la imagen sin la extensión. Por ejemplo, si se agrega al directorio *drawable* una imagen llamada **banner_rec_2026.png**, en el formulario como nombre de imagen se debe escribir **banner_rec_2026**.
