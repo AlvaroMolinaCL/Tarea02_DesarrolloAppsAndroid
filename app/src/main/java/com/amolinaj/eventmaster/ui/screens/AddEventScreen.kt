@@ -1,5 +1,8 @@
 package com.amolinaj.eventmaster.ui.screens
 
+import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,6 +34,8 @@ import com.amolinaj.eventmaster.ui.model.EventCategory
 import com.amolinaj.eventmaster.ui.state.EventFormValidationErrors
 import com.amolinaj.eventmaster.ui.viewmodel.EventMasterViewModel
 
+@SuppressLint("DiscouragedApi")
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddEventScreen(
@@ -82,6 +87,10 @@ fun AddEventScreen(
                 return@Column
             }
 
+            Text(
+                text = stringResource(id = R.string.create_event_description),
+                style = MaterialTheme.typography.bodyMedium
+            )
             EventMasterTextField(
                 value = title,
                 onValueChange = {
