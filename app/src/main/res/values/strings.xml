@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">EventMaster</string>
     <string name="create_category">Nueva categoría</string>
-    <string name="create_category_title">Crear categoría personalizada</string>
-    <string name="create_category_description">Agrega una categoría que se mostrará de forma dinámica en la pantalla principal.</string>
+    <string name="create_category_title">Crear categoría</string>
+    <string name="create_category_description">Agrega una categoría que posteriormente se podrá vincular a nuevos eventos.</string>
     <string name="category_name_label">Nombre de categoría</string>
     <string name="category_description_label">Descripción breve (opcional)</string>
     <string name="save_category">Guardar categoría</string>
     <string name="add_event">Agregar evento</string>
     <string name="add_event_title">Registrar nuevo evento</string>
+    <string name="create_event_description">Agrega un evento que se mostrará en la pantalla principal.</string>
     <string name="event_title_label">Título del evento</string>
     <string name="event_description_label">Descripción</string>
     <string name="event_date_label">Fecha (ej: 12/06/2026)</string>
